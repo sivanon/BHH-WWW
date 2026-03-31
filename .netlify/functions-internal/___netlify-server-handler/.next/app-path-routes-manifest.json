@@ -1,0 +1,11 @@
+{
+  "/[lang]/appointment/page": "/[lang]/appointment",
+  "/[lang]/contact/page": "/[lang]/contact",
+  "/[lang]/departments/page": "/[lang]/departments",
+  "/[lang]/doctors/page": "/[lang]/doctors",
+  "/[lang]/page": "/[lang]",
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/favicon.ico/route": "/favicon.ico",
+  "/page": "/"
+}

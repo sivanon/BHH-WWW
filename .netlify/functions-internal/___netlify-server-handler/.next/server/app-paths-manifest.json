@@ -1,0 +1,11 @@
+{
+  "/[lang]/appointment/page": "app/[lang]/appointment/page.js",
+  "/[lang]/contact/page": "app/[lang]/contact/page.js",
+  "/[lang]/departments/page": "app/[lang]/departments/page.js",
+  "/[lang]/doctors/page": "app/[lang]/doctors/page.js",
+  "/[lang]/page": "app/[lang]/page.js",
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js"
+}

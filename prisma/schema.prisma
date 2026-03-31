@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/lib/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model News {
+  id        String   @id @default(cuid())
+  title     String
+  content   String   @default("")
+  category  String   // "pr", "procurement", "job"
+  date      DateTime @default(now())
+  published     Boolean  @default(true)
+  imageUrl      String?
+  attachmentUrl String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Doctor {
+  id             String   @id @default(cuid())
+  name           String
+  specialty      String
+  experience     Int      @default(0)
+  availableHours String   @default("09.00 - 16.00")
+  location       String   @default("Main Hospital Building")
+  imageUrl       String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Complaint {
+  id          String   @id @default(cuid())
+  senderName  String
+  patientId   String?  // Optional HN number
+  topic       String
+  description String
+  contactInfo String
+  status      String   @default("NEW") // NEW, IN_PROGRESS, RESOLVED
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Article {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  category    String   // E.g., "Health", "Nutrition", "Childcare"
+  imageUrl    String?
+  published   Boolean  @default(true)
+  authorId    String?  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model RoomRate {
+  id          String   @id @default(cuid())
+  name        String   // "VIP Suite", "Single Room", "Shared Ward"
+  price       Int
+  description String
+  imageUrl    String?
+  amenities   String   // JSON string or comma separated
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model OitDocument {
+  id        String   @id @default(cuid())
+  indicator Int      
+  oitCode   String   
+  name      String   
+  url       String   
+  size      String   @default("0 KB")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PageContent {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  title     String
+  content   String
+  updatedAt DateTime @updatedAt
+}
