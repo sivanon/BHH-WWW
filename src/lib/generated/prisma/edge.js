@@ -84,6 +84,9 @@ Prisma.NullTypes = {
  * Enums
  */
 exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
+  ReadUncommitted: 'ReadUncommitted',
+  ReadCommitted: 'ReadCommitted',
+  RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
 });
 
@@ -180,6 +183,11 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
@@ -234,18 +242,17 @@ const config = {
   "datasourceNames": [
     "db"
   ],
-  "activeProvider": "sqlite",
-  "postinstall": false,
+  "activeProvider": "postgresql",
   "inlineDatasources": {
     "db": {
       "url": {
-        "fromEnvVar": "DATABASE_URL",
+        "fromEnvVar": "POSTGRES_PRISMA_URL",
         "value": null
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/lib/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id        String   @id @default(cuid())\n  email     String   @unique\n  password  String\n  name      String?\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel News {\n  id            String   @id @default(cuid())\n  title         String\n  content       String   @default(\"\")\n  category      String // \"pr\", \"procurement\", \"job\"\n  date          DateTime @default(now())\n  published     Boolean  @default(true)\n  imageUrl      String?\n  attachmentUrl String?\n  createdAt     DateTime @default(now())\n  updatedAt     DateTime @updatedAt\n}\n\nmodel Doctor {\n  id             String   @id @default(cuid())\n  name           String\n  specialty      String\n  experience     Int      @default(0)\n  availableHours String   @default(\"09.00 - 16.00\")\n  location       String   @default(\"Main Hospital Building\")\n  imageUrl       String?\n  createdAt      DateTime @default(now())\n  updatedAt      DateTime @updatedAt\n}\n\nmodel Complaint {\n  id          String   @id @default(cuid())\n  senderName  String\n  patientId   String? // Optional HN number\n  topic       String\n  description String\n  contactInfo String\n  status      String   @default(\"NEW\") // NEW, IN_PROGRESS, RESOLVED\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n}\n\nmodel Article {\n  id        String   @id @default(cuid())\n  title     String\n  content   String\n  category  String // E.g., \"Health\", \"Nutrition\", \"Childcare\"\n  imageUrl  String?\n  published Boolean  @default(true)\n  authorId  String?\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel RoomRate {\n  id          String   @id @default(cuid())\n  name        String // \"VIP Suite\", \"Single Room\", \"Shared Ward\"\n  price       Int\n  description String\n  imageUrl    String?\n  amenities   String // JSON string or comma separated\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n}\n\nmodel OitDocument {\n  id        String   @id @default(cuid())\n  indicator Int\n  oitCode   String\n  name      String\n  url       String\n  size      String   @default(\"0 KB\")\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel PageContent {\n  id        String   @id @default(cuid())\n  slug      String   @unique\n  title     String\n  content   String\n  updatedAt DateTime @updatedAt\n}\n",
-  "inlineSchemaHash": "d64d934e3394f5fda0d6906005e6f692ba57027ce0bc7a64753acf8774a4ef55",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/lib/generated/prisma\"\n}\n\ndatasource db {\n  provider  = \"postgresql\"\n  url       = env(\"POSTGRES_PRISMA_URL\")\n  directUrl = env(\"POSTGRES_URL_NON_POOLING\")\n}\n\nmodel User {\n  id        String   @id @default(cuid())\n  email     String   @unique\n  password  String\n  name      String?\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel News {\n  id            String   @id @default(cuid())\n  title         String\n  content       String   @default(\"\")\n  category      String // \"pr\", \"procurement\", \"job\"\n  date          DateTime @default(now())\n  published     Boolean  @default(true)\n  imageUrl      String?\n  attachmentUrl String?\n  createdAt     DateTime @default(now())\n  updatedAt     DateTime @updatedAt\n}\n\nmodel Doctor {\n  id             String   @id @default(cuid())\n  name           String\n  specialty      String\n  experience     Int      @default(0)\n  availableHours String   @default(\"09.00 - 16.00\")\n  location       String   @default(\"Main Hospital Building\")\n  imageUrl       String?\n  createdAt      DateTime @default(now())\n  updatedAt      DateTime @updatedAt\n}\n\nmodel Complaint {\n  id          String   @id @default(cuid())\n  senderName  String\n  patientId   String? // Optional HN number\n  topic       String\n  description String\n  contactInfo String\n  status      String   @default(\"NEW\") // NEW, IN_PROGRESS, RESOLVED\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n}\n\nmodel Article {\n  id        String   @id @default(cuid())\n  title     String\n  content   String\n  category  String // E.g., \"Health\", \"Nutrition\", \"Childcare\"\n  imageUrl  String?\n  published Boolean  @default(true)\n  authorId  String?\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel RoomRate {\n  id          String   @id @default(cuid())\n  name        String // \"VIP Suite\", \"Single Room\", \"Shared Ward\"\n  price       Int\n  description String\n  imageUrl    String?\n  amenities   String // JSON string or comma separated\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n}\n\nmodel OitDocument {\n  id        String   @id @default(cuid())\n  indicator Int\n  oitCode   String\n  name      String\n  url       String\n  size      String   @default(\"0 KB\")\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel PageContent {\n  id        String   @id @default(cuid())\n  slug      String   @unique\n  title     String\n  content   String\n  updatedAt DateTime @updatedAt\n}\n",
+  "inlineSchemaHash": "7994f314d43ef776a287e104f9b2738265f313e67dc6101dc8e20baf22968eba",
   "copyEngine": true
 }
 config.dirname = '/'
@@ -256,7 +263,7 @@ config.engineWasm = undefined
 
 config.injectableEdgeEnv = () => ({
   parsed: {
-    DATABASE_URL: typeof globalThis !== 'undefined' && globalThis['DATABASE_URL'] || typeof process !== 'undefined' && process.env && process.env.DATABASE_URL || undefined
+    POSTGRES_PRISMA_URL: typeof globalThis !== 'undefined' && globalThis['POSTGRES_PRISMA_URL'] || typeof process !== 'undefined' && process.env && process.env.POSTGRES_PRISMA_URL || undefined
   }
 })
 
