@@ -26,34 +26,34 @@ async function checkAuth() {
 export async function createNews(formData: FormData) {
   await checkAuth();
 
-  let finalImageUrl: string | null = null;
-  let finalAttachmentUrl: string | null = null;
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    console.warn("BLOB_READ_WRITE_TOKEN is not defined in Production ENV. Media upload will fail.");
+  }
 
-  let debugLog = "DEBUG INFO:\\n";
-  try {
-    const imageFile = formData.get("image") as File | null;
-    debugLog += `File detected: ${imageFile ? "YES" : "NO"}\\n`;
-    if (imageFile) debugLog += `File size: ${imageFile.size}\\n`;
-    debugLog += `Token exists: ${!!process.env.BLOB_READ_WRITE_TOKEN}\\n`;
-
-    if (imageFile && imageFile.size > 0) {
-      if (!process.env.BLOB_READ_WRITE_TOKEN) {
-        debugLog += "Warning: Missing BLOB Token.\\n";
-      } else {
-        debugLog += "Attempting Blob put...\\n";
-        const blob = await put(imageFile.name, imageFile, { access: 'public' });
-        finalImageUrl = blob.url;
-        debugLog += `Blob success! URL: ${blob.url}\\n`;
-      }
+  const imageFile = formData.get("image") as File | null;
+  if (imageFile && imageFile.size > 0) {
+    try {
+      const blob = await put(imageFile.name, imageFile, { access: 'public' });
+      finalImageUrl = blob.url;
+    } catch (e: any) {
+      throw new Error(`Vercel Blob Image Upload Failed: ${e.message}`);
     }
-  } catch (err: any) {
-    debugLog += `EXCEPTION: ${err.message}\\n`;
+  }
+
+  const attachmentFile = formData.get("attachment") as File | null;
+  if (attachmentFile && attachmentFile.size > 0) {
+    try {
+      const blob = await put(attachmentFile.name, attachmentFile, { access: 'public' });
+      finalAttachmentUrl = blob.url;
+    } catch (e: any) {
+      throw new Error(`Vercel Blob Attachment Upload Failed: ${e.message}`);
+    }
   }
 
   const rawData = {
     title: formData.get("title") as string,
     category: formData.get("category") as string,
-    content: (formData.get("content") as string || "") + "\\n\\n" + debugLog,
+    content: formData.get("content") as string || "",
     imageUrl: finalImageUrl,
     attachmentUrl: finalAttachmentUrl,
   };
