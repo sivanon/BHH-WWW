@@ -1,4 +1,4 @@
 @echo off
 git add .
-git commit -m "Fix Vercel 500 Server Error (Restored Serverless Prisma Binary Linking)"
+git commit -m "Allow dynamic remote image domains in next.config.ts"
 git push
