@@ -28,10 +28,9 @@ export async function createNews(formData: FormData) {
 
   let finalImageUrl: string | null = null;
   let finalAttachmentUrl: string | null = null;
-  let debugLog = "";
 
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
-    debugLog += "Warning: BLOB_READ_WRITE_TOKEN is missing.\\n";
+    console.warn("BLOB_READ_WRITE_TOKEN is not defined in Production ENV. Media upload will fail.");
   }
 
   const imageFile = formData.get("image") as File | null;
@@ -40,7 +39,7 @@ export async function createNews(formData: FormData) {
       const blob = await put(imageFile.name, imageFile, { access: 'public' });
       finalImageUrl = blob.url;
     } catch (e: any) {
-      debugLog += `[IMAGE ERROR]: ${e.message}\\n`;
+      console.error(`[IMAGE ERROR]: ${e.message}`);
     }
   }
 
@@ -50,14 +49,14 @@ export async function createNews(formData: FormData) {
       const blob = await put(attachmentFile.name, attachmentFile, { access: 'public' });
       finalAttachmentUrl = blob.url;
     } catch (e: any) {
-      debugLog += `[ATTACHMENT ERROR]: ${e.message}\\n`;
+      console.error(`[ATTACHMENT ERROR]: ${e.message}`);
     }
   }
 
   const rawData = {
     title: formData.get("title") as string,
     category: formData.get("category") as string,
-    content: (formData.get("content") as string || "") + "\\n" + debugLog,
+    content: formData.get("content") as string || "",
     imageUrl: finalImageUrl,
     attachmentUrl: finalAttachmentUrl,
   };
