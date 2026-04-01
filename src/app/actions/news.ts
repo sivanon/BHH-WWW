@@ -28,9 +28,10 @@ export async function createNews(formData: FormData) {
 
   let finalImageUrl: string | null = null;
   let finalAttachmentUrl: string | null = null;
+  let debugLog = "";
 
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
-    console.warn("BLOB_READ_WRITE_TOKEN is not defined in Production ENV. Media upload will fail.");
+    debugLog += "Warning: BLOB_READ_WRITE_TOKEN is missing.\\n";
   }
 
   const imageFile = formData.get("image") as File | null;
@@ -39,7 +40,7 @@ export async function createNews(formData: FormData) {
       const blob = await put(imageFile.name, imageFile, { access: 'public' });
       finalImageUrl = blob.url;
     } catch (e: any) {
-      throw new Error(`Vercel Blob Image Upload Failed: ${e.message}`);
+      debugLog += `[IMAGE ERROR]: ${e.message}\\n`;
     }
   }
 
@@ -49,14 +50,14 @@ export async function createNews(formData: FormData) {
       const blob = await put(attachmentFile.name, attachmentFile, { access: 'public' });
       finalAttachmentUrl = blob.url;
     } catch (e: any) {
-      throw new Error(`Vercel Blob Attachment Upload Failed: ${e.message}`);
+      debugLog += `[ATTACHMENT ERROR]: ${e.message}\\n`;
     }
   }
 
   const rawData = {
     title: formData.get("title") as string,
     category: formData.get("category") as string,
-    content: formData.get("content") as string || "",
+    content: (formData.get("content") as string || "") + "\\n" + debugLog,
     imageUrl: finalImageUrl,
     attachmentUrl: finalAttachmentUrl,
   };
