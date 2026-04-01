@@ -26,6 +26,9 @@ async function checkAuth() {
 export async function createNews(formData: FormData) {
   await checkAuth();
 
+  let finalImageUrl: string | null = null;
+  let finalAttachmentUrl: string | null = null;
+
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
     console.warn("BLOB_READ_WRITE_TOKEN is not defined in Production ENV. Media upload will fail.");
   }
