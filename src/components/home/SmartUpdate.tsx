@@ -1,4 +1,4 @@
-import { News } from "@/lib/generated/prisma";
+import { News } from "@prisma/client";
 import { ChevronRight, Megaphone, Beaker, UserPlus, ShoppingBag, ArrowRight } from "lucide-react";
 import Link from "next/link";
 

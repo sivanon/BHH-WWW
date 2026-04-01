@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ChevronRight, Paperclip, Image as ImageIcon } from "lucide-react";
-import { News } from "@/lib/generated/prisma";
+import { News } from "@prisma/client";
 
 export default function NewsTabs({ initialNews }: { initialNews: News[] }) {
   const [activeTab, setActiveTab] = useState("pr");
