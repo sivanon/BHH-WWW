@@ -80,6 +80,7 @@ export default async function AdminITAPage(props: { params: Promise<{ lang: stri
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900">อัปโหลดเอกสารใหม่</h2>
               </div>
+              {/* @ts-expect-error Server Action Type Mismatch in Next.js 14 */}
               <form action={addOitDocument} className="space-y-5">
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">หมวดหมู่ตัวชี้วัด</label>

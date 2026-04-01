@@ -76,6 +76,7 @@ export default async function AdminPagesCMS(props: { params: Promise<{ lang: str
                        • {existingData ? "มีข้อมูลบนเซิร์ฟเวอร์แล้ว" : "ยังใช้เนื้อหาแผ่นป้ายจำลอง"}
                      </span>
                   </div>
+                  {/* @ts-expect-error Server Action Type Mismatch in Next.js 14 */}
                   <form action={updatePageContent} className="p-6 space-y-4">
                     <input type="hidden" name="slug" value={slugDef.id} />
                     
