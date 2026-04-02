@@ -97,7 +97,7 @@ export default async function NewsManager() {
                   <th className="p-4 font-bold border-b border-gray-200">วันที่</th>
                   <th className="p-4 font-bold border-b border-gray-200">หมวดหมู่</th>
                   <th className="p-4 font-bold border-b border-gray-200">หัวข้อข่าว</th>
-                  <th className="p-4 font-bold border-b border-gray-200 text-right">แอคชั่น</th>
+                  <th className="p-4 font-bold border-b border-gray-200 text-center">จัดการ</th>
                 </tr>
               </thead>
               <tbody>
@@ -121,10 +121,10 @@ export default async function NewsManager() {
                         </span>
                       </td>
                     <td className="p-4 font-medium text-gray-900">{news.title}</td>
-                    <td className="p-4 text-right">
+                    <td className="p-4 text-center">
                       <form action={async () => { "use server"; await deleteNews(news.id); }}>
                         <button type="submit" className="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition" title="ลบข้อมูล">
-                          <Trash2 className="w-5 h-5" />
+                          <Trash2 className="w-5 h-5 mx-auto" />
                         </button>
                       </form>
                     </td>
