@@ -14,16 +14,29 @@ export default async function AdminITAPage(props: { params: Promise<{ lang: stri
     ]
   });
 
-  const indicatorNames = [
-    "ตัวชี้วัดที่ 1 การเปิดเผยข้อมูล (MOIT 1 - MOIT 2)",
-    "ตัวชี้วัดที่ 2 การจัดซื้อจัดจ้างหรือการจัดหาพัสดุ (MOIT 3 - MOIT 5)",
-    "ตัวชี้วัดที่ 3 การบริหารและพัฒนาทรัพยากรบุคคล (MOIT 6 - MOIT 8)",
-    "ตัวชี้วัดที่ 4 การส่งเสริมความโปร่งใส (MOIT 9 - MOIT 11)",
-    "ตัวชี้วัดที่ 5 การป้องกันการรับสินบน (MOIT 12 - MOIT 13)",
-    "ตัวชี้วัดที่ 6 การป้องกันการใช้ทรัพย์สินของราชการ (MOIT 14)",
-    "ตัวชี้วัดที่ 7 การดำเนินการเพื่อป้องกันการทุจริต (MOIT 15 - MOIT 19)",
-    "ตัวชี้วัดที่ 8 การป้องกันผลประโยชน์ทับซ้อน (MOIT 20)",
-    "ตัวชี้วัดที่ 9 การเสริมสร้างวัฒนธรรมองค์กร (MOIT 21 - MOIT 22)"
+  const moitDefinitions = [
+    { code: "MOIT 1", title: "หน่วยงานมีการวางระบบโดยการกำหนดมาตรการการเผยแพร่ข้อมูลต่อสาธารณะผ่านเว็บไซต์ของหน่วยงาน", indicatorId: 1 },
+    { code: "MOIT 2", title: "หน่วยงานมีการเปิดเผยข้อมูลข่าวสารที่เป็นปัจจุบัน", indicatorId: 1 },
+    { code: "MOIT 3", title: "หน่วยงานมีรายงานการวิเคราะห์ผลการจัดซื้อจัดจ้างและการจัดหาพัสดุของปีงบประมาณในปีที่ผ่านมา (ของปีงบประมาณ พ.ศ. 2568)", indicatorId: 2 },
+    { code: "MOIT 4", title: "หน่วยงานมีการวางระบบการจัดซื้อจัดจ้างหรือการจัดหาพัสดุประจำปีงบประมาณ พ.ศ. 2569", indicatorId: 2 },
+    { code: "MOIT 5", title: "หน่วยงานมีการสรุปผลการจัดซื้อจัดจ้างและการจัดหาพัสดุรายเดือน ประจำปีงบประมาณ พ.ศ. 2569", indicatorId: 2 },
+    { code: "MOIT 6", title: "ผู้บริหารแสดงนโยบายการบริหารและพัฒนาทรัพยากรบุคคล", indicatorId: 3 },
+    { code: "MOIT 7", title: "หน่วยงานมีการรายงานการประเมินผลการปฏิบัติราชการของบุคลากรในหน่วยงานและเปิดเผยผลการปฏิบัติราชการ ระดับดีเด่น และระดับดีมาก ในที่เปิดเผยให้ทราบ ของปีงบประมาณ พ.ศ. 2568 และปีงบประมาณ พ.ศ. 2569", indicatorId: 3 },
+    { code: "MOIT 8", title: "หน่วยงานมีการอบรมให้ความรู้แก่เจ้าหน้าที่ภายในหน่วยงานเกี่ยวกับการเสริมสร้างและพัฒนาทางด้านจริยธรรมและการรักษาวินัย รวมทั้งการป้องกันมิให้กระทำผิดวินัย ปีงบประมาณ พ.ศ. 2569", indicatorId: 3 },
+    { code: "MOIT 9", title: "หน่วยงานมีแนวปฏิบัติการจัดการเรื่องร้องเรียน และช่องทางการร้องเรียน", indicatorId: 4 },
+    { code: "MOIT 10", title: "หน่วยงานมีสรุปผลการดำเนินงานเรื่องร้องเรียนการปฏิบัติงานหรือการให้บริการของเจ้าหน้าที่ภายในหน่วยงาน และเรื่องร้องเรียนการทุจริตและประพฤติมิชอบ", indicatorId: 4 },
+    { code: "MOIT 11", title: "หน่วยงานของท่านเปิดโอกาสให้ผู้มีส่วนได้ส่วนเสียมีโอกาสเข้ามามีส่วนร่วมในการดำเนินงานตามภารกิจของหน่วยงาน", indicatorId: 4 },
+    { code: "MOIT 12", title: "หน่วยงานมีมาตรการ “การป้องกันการรับสินบน” ที่เป็นระบบ", indicatorId: 5 },
+    { code: "MOIT 13", title: "หน่วยงานจัดทำแนวทางปฏิบัติของหน่วยงาน ในปีงบประมาณ พ.ศ.2568-2569 ตามประกาศกระทรวงสาธารณสุข เรื่อง เกณฑ์จริยธรรมการจัดซื้อจัดหาและการส่งเสริมการขายยาและเวชภัณฑ์ที่มิใช่ยาของกระทรวงสาธารณสุข พ.ศ. 2564", indicatorId: 5 },
+    { code: "MOIT 14", title: "หน่วยงานมีแนวทางปฏิบัติเกี่ยวกับการใช้ทรัพย์สินของราชการ และมีขั้นตอนการขออนุญาตเพื่อยืมทรัพย์สินของราชการไปใช้ปฏิบัติในหน่วยงานที่ถูกต้อง", indicatorId: 6 },
+    { code: "MOIT 15", title: "หน่วยงานมีแผนปฏิบัติการป้องกัน ปราบปรามการทุจริตและประพฤติมิชอบและแผนปฏิบัติการส่งเสริมคุณธรรมของชมรมจริยธรรม ประจำปีงบประมาณ พ.ศ. 2569", indicatorId: 7 },
+    { code: "MOIT 16", title: "หน่วยงานมีรายงานผลการดำเนินงานตามแผนปฏิบัติการป้องกัน ปราบปรามการทุจริตและประพฤติมิชอบ ประจำปีงบประมาณ พ.ศ. 2569 และรายงานผลการดำเนินงานตามแผนปฏิบัติการส่งเสริมคุณธรรมของชมรมจริยธรรมของหน่วยงาน ประจำปีงบประมาณ พ.ศ. 2569", indicatorId: 7 },
+    { code: "MOIT 17", title: "หน่วยงานมีการประเมินความเสี่ยงการทุจริต ประจำปีงบประมาณ พ.ศ. 2569 อย่างเป็นระบบ", indicatorId: 7 },
+    { code: "MOIT 18", title: "หน่วยงานมีการปฏิบัติตามมาตรการป้องกันการทุจริต (การควบคุมความเสี่ยงการทุจริต)", indicatorId: 7 },
+    { code: "MOIT 19", title: "หน่วยงานมีการรายงานผลการส่งเสริมการปฏิบัติตามประมวลจริยธรรมข้าราชการพลเรือน : กรณีการเรี่ยไรและกรณีการให้หรือรับของขวัญหรือประโยชน์อื่นใด ประจำปีงบประมาณ พ.ศ. 2569", indicatorId: 7 },
+    { code: "MOIT 20", title: "หน่วยงานมีส่วนร่วมกิจกรรมวันต่อต้านคอรัปชั่นสากล (ประเทศไทย) วันที่ 9 ธันวาคม พ.ศ. 2568 ประจำปีงบประมาณ พ.ศ. 2569 ของสำนักงานคณะกรรมการป้องกันและปราบปรามการทุจริตแห่งชาติ (สำนักงาน ป.ป.ช.)", indicatorId: 8 },
+    { code: "MOIT 21", title: "หน่วยงานมีการเผยแพร่เจตจำนงสุจริตของการปฏิบัติหน้าที่ราชการ และนโยบายที่เคารพสิทธิมนุษยชนและศักดิ์ศรีของผู้ปฏิบัติงานและของผู้บริหารต่อสาธารณชน", indicatorId: 9 },
+    { code: "MOIT 22", title: "หน่วยงานมีแนวปฏิบัติที่เคารพสิทธิมนุษยชนและศักดิ์ศรีของผู้ปฏิบัติงาน และรายงานการป้องกันและแก้ไขปัญหาการล่วงละเมิดหรือคุกคามทางเพศในการทำงานประจำปีงบประมาณ พ.ศ. 2569", indicatorId: 9 }
   ];
 
   return (
@@ -83,18 +96,14 @@ export default async function AdminITAPage(props: { params: Promise<{ lang: stri
               {/* @ts-expect-error Server Action Type Mismatch in Next.js 14 */}
               <form action={addOitDocument} className="space-y-5">
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">หมวดหมู่ตัวชี้วัด</label>
-                  <select name="indicator" required className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary bg-gray-50 text-gray-900 font-medium">
-                    {indicatorNames.map((name, i) => (
-                      <option key={i} value={i + 1}>{name}</option>
+                  <label className="block text-sm font-bold text-gray-700 mb-2">เลือกข้อย่อย MOIT ที่ต้องการลงข้อมูล</label>
+                  <select name="oitSelection" required className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary bg-gray-50 text-gray-900 font-medium">
+                    {moitDefinitions.map((moit, i) => (
+                      <option key={i} value={`${moit.indicatorId}|${moit.code}`}>
+                        {moit.code} (ตัวชี้วัดที่ {moit.indicatorId}) - {moit.title.substring(0,40)}...
+                      </option>
                     ))}
                   </select>
-                </div>
-                <div className="grid grid-cols-3 gap-3">
-                  <div className="col-span-3">
-                    <label className="block text-sm font-bold text-gray-700 mb-2">รหัส EB / MOIT</label>
-                    <input type="text" name="oitCode" required placeholder="เช่น MOIT1" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary font-mono uppercase bg-gray-50" />
-                  </div>
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">ชื่อเอกสาร / คำอธิบาย</label>
