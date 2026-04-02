@@ -7,19 +7,16 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const slides = [
   {
-    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=2000",
-    title: "โรงพยาบาลชุมชนที่ทันสมัย",
-    subtitle: "บริการดีวิถีใหม่ บูรณาการสู่ชุมชนเพื่อประชาชนสุขภาพดี"
+    image: "/images/slides/memorial.jpg",
+    title: "",
+    subtitle: "",
+    noOverlay: true
   },
   {
-    image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=2000",
-    title: "พัฒนาคุณภาพชีวิต",
-    subtitle: "มุ่งมั่นยกระดับบริการทางการแพทย์ตลอด 24 ชั่วโมง"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1551076805-e166946e0e11?auto=format&fit=crop&q=80&w=2000",
-    title: "เทคโนโลยีการแพทย์ก้าวหน้า",
-    subtitle: "นำนวัตกรรมมาประยุกต์ใช้เพื่อการรักษาที่แม่นยำ"
+    image: "/images/slides/hospital-front.jpg",
+    title: "โรงพยาบาลบ้านโฮ่ง",
+    subtitle: "มุ่งมั่นยกระดับบริการทางการแพทย์ พัฒนาคุณภาพชีวิตตลอด 24 ชั่วโมง",
+    noOverlay: false
   }
 ];
 
@@ -45,12 +42,16 @@ export default function HeroCarousel() {
       <div className="flex h-full Touch-pan-y">
         {slides.map((slide, index) => (
           <div className="relative flex-[0_0_100%] min-w-0 h-full" key={index}>
-            <img src={slide.image} className="w-full h-full object-cover" alt={slide.title} />
-            <div className="absolute inset-0 bg-black/40" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
-              <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-lg transform transition-all translate-y-0 opacity-100">{slide.title}</h2>
-              <p className="text-lg md:text-2xl text-white/90 drop-shadow-md font-medium max-w-2xl">{slide.subtitle}</p>
-            </div>
+            <img src={slide.image} className={`w-full h-full ${slide.noOverlay ? 'object-contain bg-black' : 'object-cover'}`} alt={slide.title || `Slide ${index + 1}`} />
+            {!slide.noOverlay && (
+              <>
+                <div className="absolute inset-0 bg-black/40" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
+                  <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-lg transform transition-all translate-y-0 opacity-100">{slide.title}</h2>
+                  <p className="text-lg md:text-2xl text-white/90 drop-shadow-md font-medium max-w-2xl">{slide.subtitle}</p>
+                </div>
+              </>
+            )}
           </div>
         ))}
       </div>
