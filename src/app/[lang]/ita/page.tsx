@@ -83,8 +83,9 @@ export default async function ITAPage({ params }: { params: Promise<{ lang: stri
         code: moit.code,
         title: moit.title,
         documents: matchedDocs.map(d => ({
+          id: d.id,
           name: d.name,
-          url: d.url,
+          url: `/api/pdf/${d.id}`,
           size: d.size,
           oitCode: d.oitCode
         }))

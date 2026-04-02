@@ -2,9 +2,11 @@ import { FileText, CheckCircle2, Clock, ChevronRight } from 'lucide-react';
 import React from 'react';
 
 interface OITDocument {
+  id?: string;
   name: string;
   url: string;
   size: string;
+  oitCode?: string;
 }
 
 interface MOITItem {
@@ -78,14 +80,8 @@ export default function OITTableDisplay({ data, index }: { data: IndicatorGroup;
                     </tr>
                   ) : (
                     item.documents.map((doc, idx) => {
-                      const match = doc.name.match(/^([A-Za-z0-9.-]+)\s+(.*)/i);
-                      let codeLabel = `เอกสาร`;
-                      let docTitle = doc.name;
-                      
-                      if (match && match[1].length < 15) {
-                         codeLabel = match[1];
-                         docTitle = match[2];
-                      }
+                      const codeLabel = doc.oitCode || `เอกสาร`;
+                      const docTitle = doc.name;
 
                       return (
                         <tr key={idx} className="border-b border-gray-100 hover:bg-green-50/20 transition-colors flex flex-col md:table-row">
