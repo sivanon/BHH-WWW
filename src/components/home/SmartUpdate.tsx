@@ -57,7 +57,7 @@ export default function SmartUpdate({ news }: SmartUpdateProps) {
                               {item.title}
                             </span>
                             <div className="flex items-center text-[11px] text-gray-500 font-semibold uppercase tracking-wider">
-                              {new Date(item.date).toLocaleDateString('th-TH', { day: 'numeric', short: 'short', year: 'numeric' })}
+                              {new Date(item.date).toLocaleDateString('th-TH', { day: 'numeric', month: 'short', year: 'numeric' })}
                               <ChevronRight className="w-3.5 h-3.5 ml-1 text-primary group-hover:translate-x-1 transition-transform" />
                             </div>
                           </div>
