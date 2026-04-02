@@ -35,16 +35,16 @@ export default function Footer({ lang }: { lang: Locale }) {
 
           <div>
             <h3 className="font-semibold text-lg mb-4">{t.contactInfo}</h3>
-            <ul className="space-y-3 text-sm text-primary-foreground/80">
-              <li className="flex items-center gap-2">
-                <MapPin className="h-4 w-4" />
-                <span>123 Medical Center Blvd, Health City</span>
+            <ul className="space-y-4 text-sm text-primary-foreground/80">
+              <li className="flex items-start gap-3">
+                <MapPin className="h-5 w-5 shrink-0 mt-0.5" />
+                <span className="leading-relaxed">291 หมู่ 1 ต.บ้านโฮ่ง <br/>อ.บ้านโฮ่ง จ.ลำพูน 51130</span>
               </li>
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-3">
                 <Phone className="h-4 w-4" />
-                <span>+1 (555) 123-4567</span>
+                <span>053-980-377</span>
               </li>
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-3">
                 <Mail className="h-4 w-4" />
                 <span>info@banhong.go.th</span>
               </li>
@@ -55,7 +55,7 @@ export default function Footer({ lang }: { lang: Locale }) {
             <h3 className="font-semibold text-lg mb-4">{t.emergency}</h3>
             <div className="p-4 bg-red-600 rounded-lg text-white">
               <p className="font-bold mb-1">{t.erWard}</p>
-              <p className="text-2xl font-black">+1 (555) 911-0000</p>
+              <p className="text-2xl font-black">1669</p>
             </div>
           </div>
         </div>
