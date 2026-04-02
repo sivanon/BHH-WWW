@@ -37,7 +37,7 @@ export async function createNews(formData: FormData) {
   const imageFile = formData.get("image") as File | null;
   if (imageFile && imageFile.size > 0) {
     try {
-      const blob = await put(imageFile.name, imageFile, { access: 'public' });
+      const blob = await put(imageFile.name, imageFile, { access: 'public', addRandomSuffix: true });
       finalImageUrl = blob.url;
     } catch (e: any) {
       trace += `[IMAGE PUT ERROR: ${e.message}] `;
@@ -49,7 +49,7 @@ export async function createNews(formData: FormData) {
   const attachmentFile = formData.get("attachment") as File | null;
   if (attachmentFile && attachmentFile.size > 0) {
     try {
-      const blob = await put(attachmentFile.name, attachmentFile, { access: 'public' });
+      const blob = await put(attachmentFile.name, attachmentFile, { access: 'public', addRandomSuffix: true });
       finalAttachmentUrl = blob.url;
     } catch (e: any) {
       trace += `[PDF PUT ERROR: ${e.message}] `;
