@@ -1,6 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import OITAccordion from "@/components/ita/OITAccordion";
+import OITTableDisplay from "@/components/ita/OITTableDisplay";
 import { ShieldCheck } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 
@@ -81,9 +81,9 @@ export default async function ITAPage({ params }: { params: Promise<{ lang: stri
           </div>
         </div>
 
-        {/* Dynamic Accordion Content Wrapper */}
+        {/* Dynamic Table Flow Content Wrapper */}
         <div className="container mx-auto px-4 -mt-28 relative z-20 pb-32">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-7xl mx-auto">
              {rawDocs.length === 0 ? (
                <div className="bg-white rounded-3xl p-16 text-center shadow-xl border border-gray-100">
                  <ShieldCheck className="w-20 h-20 text-gray-200 mx-auto mb-6" />
@@ -91,7 +91,11 @@ export default async function ITAPage({ params }: { params: Promise<{ lang: stri
                  <p className="text-gray-500 text-lg">ยังไม่มีเอกสาร ITA ถูกเผยแพร่ในระบบ ผู้ดูแลระบบสามารถเพิ่มเอกสารผ่านหน้า Admin CMS จัดการข้อมูล ITA</p>
                </div>
              ) : (
-               <OITAccordion data={oitData} />
+               <div className="space-y-12">
+                 {oitData.map((indicatorGroup, index) => (
+                   <OITTableDisplay key={index} index={index} data={indicatorGroup} />
+                 ))}
+               </div>
              )}
           </div>
         </div>
