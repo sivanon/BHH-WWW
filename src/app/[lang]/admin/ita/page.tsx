@@ -154,10 +154,10 @@ export default async function AdminITAPage(props: { params: Promise<{ lang: stri
                             <span className="font-mono font-extrabold text-secondary tracking-wider bg-orange-50 px-2 py-1 rounded-md">{doc.oitCode}</span>
                           </td>
                           <td className="p-5">
-                            <a href={doc.url} target="_blank" className="font-bold text-gray-900 hover:text-primary transition-colors block line-clamp-2">
+                            <a href={`/api/pdf/${doc.id}`} target="_blank" className="font-bold text-gray-900 hover:text-primary transition-colors block line-clamp-2">
                               {doc.name}
                             </a>
-                            <p className="text-xs text-gray-400 mt-1">{doc.url.substring(0,30)}...</p>
+                            <p className="text-xs text-gray-400 mt-1">/api/pdf/{doc.id}</p>
                           </td>
                           <td className="p-5 text-center">
                             <DeleteOitButton id={doc.id} />
