@@ -7,7 +7,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { z } from "zod";
 
 const createNewsSchema = z.object({
-  title: z.string().min(1, "Title is required").max(200),
+  title: z.string().min(1, "Title is required").max(2000),
   category: z.string().min(1, "Category is required").max(50),
   content: z.string().optional().default(""),
   imageUrl: z.string().url().optional().nullable(),
