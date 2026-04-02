@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { HeartPulse, Mail, Phone, MapPin } from 'lucide-react';
 import { getDictionary, Locale } from '@/i18n/dictionaries';
 
@@ -11,9 +12,16 @@ export default function Footer({ lang }: { lang: Locale }) {
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <Link href={`/${lang}`} className="flex items-center space-x-2">
-              <HeartPulse className="h-8 w-8" />
-              <span className="text-xl font-bold">Ban Hong Hospital</span>
+            <Link href={`/${lang}`} className="flex items-center space-x-3">
+              <div className="bg-white p-1.5 rounded-xl w-14 h-14 flex items-center justify-center flex-shrink-0 shadow-sm relative">
+                <Image 
+                  src="/images/logo.jpg" 
+                  alt="Ban Hong Hospital Logo" 
+                  fill
+                  className="object-contain p-1"
+                />
+              </div>
+              <span className="text-xl font-bold tracking-tight">Ban Hong Hospital</span>
             </Link>
             <p className="text-primary-foreground/80 text-sm">
               {t.desc}

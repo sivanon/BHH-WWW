@@ -1,6 +1,7 @@
 "use client";
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { Phone, Globe, ShieldPlus } from 'lucide-react';
 import { getDictionary, Locale } from '@/i18n/dictionaries';
 
@@ -35,9 +36,17 @@ export default function Navbar({ lang }: { lang: Locale }) {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-        <Link href={`/${lang}`} className="flex items-center space-x-3 text-primary">
-          <ShieldPlus className="h-10 w-10 text-secondary" />
+      <div className="container mx-auto px-4 h-24 flex items-center justify-between">
+        <Link href={`/${lang}`} className="flex items-center space-x-4 text-primary">
+          <div className="relative w-14 h-14 md:w-16 md:h-16 flex-shrink-0">
+            <Image 
+              src="/images/logo.jpg" 
+              alt="Ban Hong Hospital Logo" 
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
           <div className="flex flex-col">
             <span className="text-2xl font-bold tracking-tight leading-none text-gray-900">
               {lang === 'th' ? 'โรงพยาบาลบ้านโฮ่ง' : 'Ban Hong Hospital'}
