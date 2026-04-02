@@ -65,7 +65,7 @@ export async function createNews(formData: FormData) {
   if (!parsed.success) {
     await prisma.news.create({
       data: {
-        title: `Validation Error: ${parsed.error.issues[0].path[0]} -> ${parsed.error.issues[0].message}`,
+        title: `Validation Error: ${String(parsed.error.issues[0].path[0])} -> ${parsed.error.issues[0].message}`,
         category: "pr",
         content: `Raw payload was: ${JSON.stringify(rawData)}`,
       }
