@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronRight, Calendar, Newspaper, ArrowRight } from "lucide-react";
 
 export default async function PublicNewsDirectory(props: { params: Promise<{ lang: string }>, searchParams: Promise<{ cat?: string }> }) {
