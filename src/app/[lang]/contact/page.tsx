@@ -36,7 +36,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg text-gray-900">{t.addressLbl}</h3>
-                    <p className="text-gray-600 mt-1 leading-relaxed">291 หมู่ 1 ต.บ้านโฮ่ง<br/>อ.บ้านโฮ่ง จ.ลำพูน 51130</p>
+                    <p className="text-gray-600 mt-1 leading-relaxed">No. 308, Moo. 7, Lamphun - Li Road,<br/>ตำบล บ้านโฮ่ง อำเภอ บ้านโฮ่ง ลำพูน 51130</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -54,7 +54,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg text-gray-900">{t.emailLbl}</h3>
-                    <p className="text-gray-600 mt-1">info@banhong.go.th<br/>สอบถามข้อมูลทั่วไป</p>
+                    <p className="text-gray-600 mt-1">banhonghospital@yahoo.com<br/>สอบถามข้อมูลทั่วไป</p>
                   </div>
                 </div>
               </div>

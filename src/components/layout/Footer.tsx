@@ -39,7 +39,7 @@ export default function Footer({ lang }: { lang: Locale }) {
               <li className="flex items-start gap-3 group">
                 <MapPin className="h-5 w-5 shrink-0 mt-0.5 group-hover:text-white transition-colors" />
                 <a href="https://maps.app.goo.gl/VBszuvXFja24uwED6" target="_blank" rel="noopener noreferrer" className="leading-relaxed hover:text-white hover:underline transition-all">
-                  291 หมู่ 1 ต.บ้านโฮ่ง <br/>อ.บ้านโฮ่ง จ.ลำพูน 51130
+                  No. 308, Moo. 7, Lamphun - Li Road, <br/>ตำบล บ้านโฮ่ง อำเภอ บ้านโฮ่ง ลำพูน 51130
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -48,7 +48,7 @@ export default function Footer({ lang }: { lang: Locale }) {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-4 w-4" />
-                <span>info@banhong.go.th</span>
+                <span>banhonghospital@yahoo.com</span>
               </li>
             </ul>
           </div>

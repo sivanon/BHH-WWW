@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FileText, ShoppingCart, AlertCircle, Search, ArrowRight, ShieldCheck, Activity, Info, Baby, Megaphone, Bot, Sparkles } from 'lucide-react';
+import { FileText, ShoppingCart, AlertCircle, Search, ArrowRight, ShieldCheck, Activity, Info, Baby, Megaphone, Bot, Sparkles, MapPin } from 'lucide-react';
 import { getDictionary, Locale } from '@/i18n/dictionaries';
 import { prisma } from '@/lib/prisma';
 
@@ -87,6 +87,29 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Map Section */}
+      <section className="py-20 bg-gray-50 border-t border-gray-100">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center mb-10 border-l-4 border-secondary pl-4">
+            <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">ที่ตั้งและแผนที่การเดินทาง</h2>
+          </div>
+          <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-2 w-full h-[350px] overflow-hidden group max-w-5xl mx-auto">
+            <a href="https://maps.app.goo.gl/VBszuvXFja24uwED6" target="_blank" rel="noopener noreferrer" className="w-full h-full bg-blue-50/50 hover:bg-blue-100 transition-colors rounded-2xl flex flex-col items-center justify-center text-primary cursor-pointer relative overflow-hidden">
+              <div className="absolute inset-0 opacity-20 bg-[url('https://maps.googleapis.com/maps/api/staticmap?center=Ban+Hong+Hospital&zoom=15&size=800x400&sensor=false')] bg-cover bg-center mix-blend-multiply"></div>
+              <div className="bg-white p-4 rounded-full mb-4 z-10 shadow-md group-hover:scale-110 transition-transform duration-300">
+                <MapPin className="h-10 w-10 text-primary" />
+              </div>
+              <span className="font-bold text-xl md:text-2xl z-10 text-gray-900 bg-white/90 px-8 py-3 rounded-full shadow-sm text-center">
+                คลิกเพื่อเปิดนำทางด้วย Google Maps
+              </span>
+              <span className="text-sm text-gray-600 mt-4 z-10 font-bold bg-white/90 px-6 py-2 rounded-full text-center">
+                No. 308, Moo. 7, Lamphun - Li Road, ตำบล บ้านโฮ่ง อำเภอ บ้านโฮ่ง ลำพูน 51130
+              </span>
+            </a>
           </div>
         </div>
       </section>
