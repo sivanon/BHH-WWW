@@ -1,6 +1,7 @@
 import { News } from "@prisma/client";
 import { ChevronRight, Megaphone, Beaker, UserPlus, ShoppingBag, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface SmartUpdateProps {
   news: News[];
@@ -33,14 +34,28 @@ export default function SmartUpdate({ news }: SmartUpdateProps) {
                     <li key={item.id} className="group border-b border-gray-50 pb-3 last:border-0 last:pb-0">
                       <Link 
                         href={`/th/news/${item.id}`} 
-                        className="text-sm font-medium text-gray-700 group-hover:text-primary transition-colors line-clamp-2 block mb-1"
+                        className="flex gap-3 items-start group-hover:bg-gray-50/50 p-1.5 -m-1.5 rounded-lg transition-colors"
                       >
-                        {item.title}
+                        {item.imageUrl && (
+                          <div className="relative w-16 h-16 shrink-0 rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
+                            <Image 
+                              src={item.imageUrl} 
+                              alt={item.title} 
+                              fill 
+                              className="object-cover transition-transform duration-300 group-hover:scale-110" 
+                            />
+                          </div>
+                        )}
+                        <div className="flex-1 min-w-0 pt-0.5">
+                          <span className="text-sm font-bold text-gray-700 group-hover:text-primary transition-colors line-clamp-2 block mb-1.5">
+                            {item.title}
+                          </span>
+                          <div className="flex items-center text-[10px] text-gray-400 font-semibold uppercase tracking-wider">
+                            {new Date(item.date).toLocaleDateString('th-TH', { day: 'numeric', month: 'short' })}
+                            <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                          </div>
+                        </div>
                       </Link>
-                      <div className="flex items-center text-[10px] text-gray-400 font-semibold uppercase tracking-wider">
-                        {new Date(item.date).toLocaleDateString('th-TH', { day: 'numeric', month: 'short' })}
-                        <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
-                      </div>
                     </li>
                   ))}
                 </ul>
