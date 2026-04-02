@@ -28,18 +28,24 @@ export default function SocialChannels() {
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/40 rounded-full -mr-32 -mt-32 blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-green-500/10 rounded-full -ml-32 -mb-32 blur-3xl"></div>
         
-        <div className="bg-white p-5 rounded-full shadow-xl mb-8 relative z-10 border-4 border-green-500">
-          <MessageCircle className="w-16 h-16 text-green-500" />
+        <div className="bg-white p-2 rounded-2xl shadow-xl mb-6 relative z-10 border-4 border-green-500 group overflow-hidden flex flex-col items-center justify-center">
+          <img 
+            src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://page.line.me/475ptmfj" 
+            alt="LINE QR Code" 
+            width={180} 
+            height={180} 
+            className="rounded-xl object-contain transition-transform duration-300 group-hover:scale-105" 
+          />
         </div>
         
         <h3 className="text-3xl font-extrabold text-green-900 mb-4 tracking-tight relative z-10">แอดไลน์ "หมอพร้อม"</h3>
-        <p className="text-green-800/80 mb-10 max-w-sm text-lg relative z-10 font-medium leading-relaxed">
-          ระบบบริการด้านสาธารณสุข รับบัตรคิวออนไลน์ ดูประวัติรักษา และบริการทางการแพทย์บนมือถือ
+        <p className="text-green-800/80 mb-8 max-w-sm text-lg relative z-10 font-medium leading-relaxed">
+          ระบบบริการด้านสาธารณสุข รับบัตรคิวออนไลน์ ดูประวัติรักษา และบริการทางการแพทย์บนมือถือ สแกน QR Code หรือคลิกปุ่มด้านล่าง
         </p>
         
-        <a href="https://line.me/R/ti/p/@mohpromt" target="_blank" rel="noopener noreferrer" className="relative z-10 inline-flex items-center justify-center px-10 py-5 text-xl font-bold text-white transition-all bg-green-500 rounded-2xl hover:bg-green-600 shadow-xl hover:-translate-y-1 hover:shadow-2xl">
+        <a href="https://page.line.me/475ptmfj" target="_blank" rel="noopener noreferrer" className="relative z-10 inline-flex items-center justify-center px-10 py-5 text-xl font-bold text-white transition-all bg-green-500 rounded-2xl hover:bg-green-600 shadow-xl hover:-translate-y-1 hover:shadow-2xl">
           <MessageCircle className="w-7 h-7 mr-3" />
-          เพิ่มเพื่อน @mohpromt
+          คลิกเพิ่มเพื่อนทาง LINE
         </a>
       </div>
     </div>
