@@ -74,7 +74,7 @@ export default function SmartUpdate({ news }: SmartUpdateProps) {
                 href={`/th/news?cat=${cat.id}`} 
                 className="text-xs font-bold text-primary flex items-center justify-end hover:underline"
               >
-                ดูพั้งหมด <ArrowRight className="w-3 h-3 ml-1" />
+                ดูทั้งหมด <ArrowRight className="w-3 h-3 ml-1" />
               </Link>
             </div>
           </div>
