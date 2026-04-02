@@ -36,9 +36,11 @@ export default function Footer({ lang }: { lang: Locale }) {
           <div>
             <h3 className="font-semibold text-lg mb-4">{t.contactInfo}</h3>
             <ul className="space-y-4 text-sm text-primary-foreground/80">
-              <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 shrink-0 mt-0.5" />
-                <span className="leading-relaxed">291 หมู่ 1 ต.บ้านโฮ่ง <br/>อ.บ้านโฮ่ง จ.ลำพูน 51130</span>
+              <li className="flex items-start gap-3 group">
+                <MapPin className="h-5 w-5 shrink-0 mt-0.5 group-hover:text-white transition-colors" />
+                <a href="https://maps.app.goo.gl/VBszuvXFja24uwED6" target="_blank" rel="noopener noreferrer" className="leading-relaxed hover:text-white hover:underline transition-all">
+                  291 หมู่ 1 ต.บ้านโฮ่ง <br/>อ.บ้านโฮ่ง จ.ลำพูน 51130
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-4 w-4" />

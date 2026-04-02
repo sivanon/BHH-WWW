@@ -36,7 +36,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg text-gray-900">{t.addressLbl}</h3>
-                    <p className="text-gray-600 mt-1">123 Medical Center Blvd<br/>Health City, HC 10001</p>
+                    <p className="text-gray-600 mt-1 leading-relaxed">291 หมู่ 1 ต.บ้านโฮ่ง<br/>อ.บ้านโฮ่ง จ.ลำพูน 51130</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -45,7 +45,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg text-gray-900">{t.phoneLbl}</h3>
-                    <p className="text-gray-600 mt-1">General: +1 (555) 123-4567<br/>Emergency: +1 (555) 911-0000</p>
+                    <p className="text-gray-600 mt-1">โทรศัพท์กลาง: 053-980-377<br/>สายด่วนฉุกเฉิน: 1669</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -54,7 +54,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg text-gray-900">{t.emailLbl}</h3>
-                    <p className="text-gray-600 mt-1">info@banhong.go.th<br/>appointments@banhong.go.th</p>
+                    <p className="text-gray-600 mt-1">info@banhong.go.th<br/>สอบถามข้อมูลทั่วไป</p>
                   </div>
                 </div>
               </div>
@@ -81,11 +81,15 @@ export default function ContactPage() {
 
           {/* Map & FAQs */}
           <div className="space-y-8">
-            <div className="bg-white rounded-xl shadow-md border border-gray-100 p-1 w-full h-[300px] overflow-hidden">
-              <div className="w-full h-full bg-gray-200 rounded-lg flex flex-col items-center justify-center text-gray-400">
-                <MapPin className="h-12 w-12 mb-2 text-gray-400" />
-                <span className="font-medium">{t.map}</span>
-              </div>
+            <div className="bg-white rounded-xl shadow-md border border-gray-100 p-1 w-full h-[300px] overflow-hidden group">
+              <a href="https://maps.app.goo.gl/VBszuvXFja24uwED6" target="_blank" rel="noopener noreferrer" className="w-full h-full bg-blue-50/50 hover:bg-blue-100 transition-colors rounded-lg flex flex-col items-center justify-center text-primary cursor-pointer relative overflow-hidden">
+                <div className="absolute inset-0 opacity-10 bg-[url('https://maps.googleapis.com/maps/api/staticmap?center=Ban+Hong+Hospital&zoom=15&size=800x400&sensor=false')] bg-cover bg-center mix-blend-multiply"></div>
+                <MapPin className="h-16 w-16 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
+                <span className="font-bold text-lg md:text-xl z-10 flex items-center bg-white/90 px-6 py-2 rounded-full shadow-sm">
+                  เปิดนำทางด้วย Google Maps
+                </span>
+                <span className="text-sm text-gray-500 mt-2 z-10 font-semibold bg-white/80 px-4 py-1 rounded-full">https://maps.app.goo.gl/VBszuvXFja24uwED6</span>
+              </a>
             </div>
 
             <div className="bg-white rounded-xl shadow-md border border-gray-100 p-8">
