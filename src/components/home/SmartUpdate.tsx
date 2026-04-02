@@ -17,7 +17,7 @@ export default function SmartUpdate({ news }: SmartUpdateProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {categories.map((cat) => {
-        const catNews = news.filter(n => n.category === cat.id).slice(0, 5);
+        const catNews = news.filter(n => n.category === cat.id).slice(0, 2);
         return (
           <div key={cat.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col h-full overflow-hidden hover:shadow-md transition-shadow">
             <div className={`p-4 border-b-4 ${cat.borderColor} bg-gray-50/50 flex items-center`}>
@@ -29,11 +29,11 @@ export default function SmartUpdate({ news }: SmartUpdateProps) {
               {catNews.length === 0 ? (
                 <p className="text-gray-400 text-sm italic py-4">ไม่มีข้อมูลล่าสุด</p>
               ) : (
-                <ul className="space-y-4">
-                  {catNews.map((item, index) => {
-                    const isFirstRowHasImage = index === 0 && item.imageUrl;
+                <ul className="space-y-6">
+                  {catNews.map((item) => {
+                    const isFirstRowHasImage = !!item.imageUrl; // Both 2 items will show large image if they have one
                     return (
-                      <li key={item.id} className="group border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+                      <li key={item.id} className="group border-b border-gray-100 pb-6 last:border-0 last:pb-0">
                         <Link 
                           href={`/th/news/${item.id}`} 
                           className={`flex ${isFirstRowHasImage ? 'flex-col gap-3' : 'gap-4 items-start'} group-hover:bg-gray-50/50 p-2 -m-2 rounded-xl transition-all duration-300`}
@@ -53,7 +53,7 @@ export default function SmartUpdate({ news }: SmartUpdateProps) {
                             </div>
                           )}
                           <div className={`flex-1 min-w-0 ${isFirstRowHasImage ? 'pt-1' : 'pt-0.5'}`}>
-                            <span className={`${isFirstRowHasImage ? 'text-lg md:text-xl font-extrabold line-clamp-2' : 'text-sm md:text-base font-bold line-clamp-2'} text-gray-800 group-hover:text-primary transition-colors block mb-2 leading-snug`}>
+                            <span className={`${isFirstRowHasImage ? 'text-lg md:text-xl font-extrabold line-clamp-3' : 'text-sm md:text-base font-bold line-clamp-2'} text-gray-800 group-hover:text-primary transition-colors block mb-2 leading-snug`}>
                               {item.title}
                             </span>
                             <div className="flex items-center text-[11px] text-gray-500 font-semibold uppercase tracking-wider">

@@ -96,22 +96,27 @@ export default async function PublicNewsDirectory(props: { params: Promise<{ lan
                       href={`/${lang}/news/${news.id}`}
                       className="group flex flex-col md:flex-row p-6 md:p-8 hover:bg-slate-50 transition-colors duration-200"
                     >
-                      <div className="md:w-48 shrink-0 mb-4 md:mb-0 md:mr-8 pt-1">
-                         <div className="inline-flex items-center text-sm font-bold text-secondary bg-orange-50 px-3 py-1.5 rounded-lg">
+                      <div className="md:w-56 shrink-0 mb-4 md:mb-0 md:mr-8 pt-1">
+                         <div className={`inline-flex items-center text-sm font-bold text-secondary bg-orange-50 px-3 py-1.5 rounded-lg ${news.imageUrl ? 'mb-4' : ''}`}>
                            <Calendar className="w-4 h-4 mr-2" />
                            {new Date(news.date).toLocaleDateString('th-TH', { day: 'numeric', month: 'short', year: 'numeric' })}
                          </div>
+                         {news.imageUrl && (
+                           <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-gray-100 border border-gray-200">
+                             <Image src={news.imageUrl} alt={news.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                           </div>
+                         )}
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-xl font-extrabold text-gray-900 mb-3 group-hover:text-primary transition-colors leading-snug">
+                      <div className="flex-1 min-w-0 flex flex-col justify-center">
+                        <h3 className="text-xl md:text-2xl font-extrabold text-gray-900 mb-3 group-hover:text-primary transition-colors leading-snug">
                           {news.title}
                         </h3>
                         {news.content && (
-                          <p className="text-gray-500 line-clamp-2 leading-relaxed mb-4">
+                          <p className="text-gray-500 line-clamp-3 leading-relaxed mb-4">
                             {news.content}
                           </p>
                         )}
-                        <span className="inline-flex items-center text-primary font-bold text-sm mt-2">
+                        <span className="inline-flex items-center text-primary font-bold text-sm mt-auto">
                           อ่านรายละเอียด <ArrowRight className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" />
                         </span>
                       </div>
