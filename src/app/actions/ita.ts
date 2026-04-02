@@ -29,21 +29,23 @@ export async function addOitDocument(formData: FormData) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
     
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    const safeName = file.name ? file.name.replace(/[^a-zA-Z0-9.-]/g, '_') : 'document.pdf';
-    const filename = `${uniqueSuffix}-${safeName}`;
-    const uploadDir = path.join(process.cwd(), "public", "uploads", "ita");
+    // Instead of saving to the Vercel filesystem which is read-only and blocks uploads,
+    // we convert the file to a Data URI and save it natively in PostgreSQL.
+    // This allows seamless zero-config document hosting for PDF files.
+    const base64Data = buffer.toString('base64');
+    const mimeType = file.type || 'application/pdf';
+    const dataUri = `data:${mimeType};base64,${base64Data}`;
     
-    await mkdir(uploadDir, { recursive: true });
-    
-    const filepath = path.join(uploadDir, filename);
-    await writeFile(filepath, buffer);
-    
-    const url = `/uploads/ita/${filename}`;
     const size = formatBytes(file.size);
 
     await prisma.oitDocument.create({
-      data: { indicator, oitCode, name, url, size }
+      data: { 
+        indicator, 
+        oitCode, 
+        name, 
+        url: dataUri, 
+        size 
+      }
     });
     
     revalidatePath("/th/ita");
@@ -57,16 +59,7 @@ export async function addOitDocument(formData: FormData) {
 
 export async function deleteOitDocument(id: string) {
   try {
-    const doc = await prisma.oitDocument.findUnique({ where: { id } });
-    if (doc && doc.url && doc.url.startsWith('/uploads/ita/')) {
-        const filepath = path.join(process.cwd(), "public", doc.url);
-        try {
-            await unlink(filepath);
-        } catch (fileErr) {
-            // Ignore if file doesn't exist
-        }
-    }
-
+    // We no longer need to unlink physical files since we use Data URIs
     await prisma.oitDocument.delete({ where: { id } });
     revalidatePath("/th/ita");
     revalidatePath("/th/admin/ita");
