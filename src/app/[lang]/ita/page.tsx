@@ -74,7 +74,10 @@ export default async function ITAPage({ params }: { params: Promise<{ lang: stri
       const matchedDocs = rawDocs.filter(d => {
         if (d.indicator !== indicatorId) return false;
         const rawCode = (d.oitCode || "").replace(/\s+/g, '').toUpperCase();
-        return rawCode.startsWith(normalizedMoitCode);
+        
+        // Exact prefix matching: Ensure "MOIT1" matches "MOIT1.1" but NOT "MOIT10"
+        const regex = new RegExp('^' + normalizedMoitCode + '([^0-9]|$)');
+        return regex.test(rawCode);
       });
       return {
         code: moit.code,

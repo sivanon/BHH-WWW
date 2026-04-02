@@ -96,14 +96,18 @@ export default async function AdminITAPage(props: { params: Promise<{ lang: stri
               {/* @ts-expect-error Server Action Type Mismatch in Next.js 14 */}
               <form action={addOitDocument} className="space-y-5">
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">เลือกข้อย่อย MOIT ที่ต้องการลงข้อมูล</label>
+                  <label className="block text-sm font-bold text-gray-700 mb-2">1. เลือกหมวดหมู่ (ตัวชี้วัดและข้อย่อย MOIT)</label>
                   <select name="oitSelection" required className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary bg-gray-50 text-gray-900 font-medium">
                     {moitDefinitions.map((moit, i) => (
                       <option key={i} value={`${moit.indicatorId}|${moit.code}`}>
-                        {moit.code} (ตัวชี้วัดที่ {moit.indicatorId}) - {moit.title.substring(0,40)}...
+                        ตัวชี้วัด {moit.indicatorId} | {moit.code} : {moit.title.substring(0,60)}...
                       </option>
                     ))}
                   </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-2">2. รหัสเอกสารย่อย (เช่น MOIT 1.1, MOIT 1.2)</label>
+                  <input type="text" name="oitCode" required placeholder="พิมพ์รหัสเอกสาร เช่น MOIT 1.1" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary font-mono uppercase bg-gray-50" />
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">ชื่อเอกสาร / คำอธิบาย</label>

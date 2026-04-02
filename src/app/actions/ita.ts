@@ -17,8 +17,11 @@ function formatBytes(bytes: number, decimals = 1) {
 
 export async function addOitDocument(formData: FormData) {
   const selection = formData.get("oitSelection") as string;
-  const [indicatorStr, oitCode] = selection.split("|");
+  const [indicatorStr, categoryMoitCode] = selection.split("|");
   const indicator = parseInt(indicatorStr);
+  
+  // They requested they can input the explicit document code like "MOIT 1.2"
+  const oitCode = formData.get("oitCode") as string;
   
   const name = formData.get("name") as string;
   const file = formData.get("file") as File;
