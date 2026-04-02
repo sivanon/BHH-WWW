@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { HeartPulse, Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 import { getDictionary, Locale } from '@/i18n/dictionaries';
 
 export default function Footer({ lang }: { lang: Locale }) {
@@ -13,15 +13,10 @@ export default function Footer({ lang }: { lang: Locale }) {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link href={`/${lang}`} className="flex items-center space-x-3">
-              <div className="bg-white p-1.5 rounded-xl w-14 h-14 flex items-center justify-center flex-shrink-0 shadow-sm relative">
-                <Image 
-                  src="/images/logo.jpg" 
-                  alt="Ban Hong Hospital Logo" 
-                  fill
-                  className="object-contain p-1"
-                />
+              <div className="bg-white p-1.5 rounded-lg shrink-0">
+                <Image src="/logo.png" alt="Ban Hong Hospital" width={40} height={40} className="w-10 h-10 object-contain" />
               </div>
-              <span className="text-xl font-bold tracking-tight">Ban Hong Hospital</span>
+              <span className="text-xl font-bold">Ban Hong Hospital</span>
             </Link>
             <p className="text-primary-foreground/80 text-sm">
               {t.desc}
