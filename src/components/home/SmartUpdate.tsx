@@ -30,34 +30,41 @@ export default function SmartUpdate({ news }: SmartUpdateProps) {
                 <p className="text-gray-400 text-sm italic py-4">ไม่มีข้อมูลล่าสุด</p>
               ) : (
                 <ul className="space-y-4">
-                  {catNews.map((item) => (
-                    <li key={item.id} className="group border-b border-gray-50 pb-3 last:border-0 last:pb-0">
-                      <Link 
-                        href={`/th/news/${item.id}`} 
-                        className="flex gap-3 items-start group-hover:bg-gray-50/50 p-1.5 -m-1.5 rounded-lg transition-colors"
-                      >
-                        {item.imageUrl && (
-                          <div className="relative w-16 h-16 shrink-0 rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
-                            <Image 
-                              src={item.imageUrl} 
-                              alt={item.title} 
-                              fill 
-                              className="object-cover transition-transform duration-300 group-hover:scale-110" 
-                            />
+                  {catNews.map((item, index) => {
+                    const isFirstRowHasImage = index === 0 && item.imageUrl;
+                    return (
+                      <li key={item.id} className="group border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+                        <Link 
+                          href={`/th/news/${item.id}`} 
+                          className={`flex ${isFirstRowHasImage ? 'flex-col gap-3' : 'gap-4 items-start'} group-hover:bg-gray-50/50 p-2 -m-2 rounded-xl transition-all duration-300`}
+                        >
+                          {item.imageUrl && (
+                            <div className={`relative shrink-0 rounded-xl overflow-hidden bg-gray-100 border border-gray-200 shadow-sm ${
+                              isFirstRowHasImage 
+                                ? 'w-full aspect-[16/9] mb-1' // Big Hero Image for first item
+                                : 'w-24 h-20 md:w-28 md:h-20' // Larger Thumbnail for other items
+                            }`}>
+                              <Image 
+                                src={item.imageUrl} 
+                                alt={item.title} 
+                                fill 
+                                className="object-cover transition-transform duration-500 group-hover:scale-110" 
+                              />
+                            </div>
+                          )}
+                          <div className={`flex-1 min-w-0 ${isFirstRowHasImage ? 'pt-1' : 'pt-0.5'}`}>
+                            <span className={`${isFirstRowHasImage ? 'text-lg md:text-xl font-extrabold line-clamp-2' : 'text-sm md:text-base font-bold line-clamp-2'} text-gray-800 group-hover:text-primary transition-colors block mb-2 leading-snug`}>
+                              {item.title}
+                            </span>
+                            <div className="flex items-center text-[11px] text-gray-500 font-semibold uppercase tracking-wider">
+                              {new Date(item.date).toLocaleDateString('th-TH', { day: 'numeric', short: 'short', year: 'numeric' })}
+                              <ChevronRight className="w-3.5 h-3.5 ml-1 text-primary group-hover:translate-x-1 transition-transform" />
+                            </div>
                           </div>
-                        )}
-                        <div className="flex-1 min-w-0 pt-0.5">
-                          <span className="text-sm font-bold text-gray-700 group-hover:text-primary transition-colors line-clamp-2 block mb-1.5">
-                            {item.title}
-                          </span>
-                          <div className="flex items-center text-[10px] text-gray-400 font-semibold uppercase tracking-wider">
-                            {new Date(item.date).toLocaleDateString('th-TH', { day: 'numeric', month: 'short' })}
-                            <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
-                          </div>
-                        </div>
-                      </Link>
-                    </li>
-                  ))}
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               )}
             </div>
