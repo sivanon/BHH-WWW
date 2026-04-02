@@ -28,9 +28,10 @@ export async function createNews(formData: FormData) {
 
   let finalImageUrl: string | null = null;
   let finalAttachmentUrl: string | null = null;
+  let trace = "";
 
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
-    console.warn("BLOB_READ_WRITE_TOKEN is not defined in Production ENV. Media upload will fail.");
+    trace += "[NO BLOB TOKEN] ";
   }
 
   const imageFile = formData.get("image") as File | null;
@@ -39,8 +40,10 @@ export async function createNews(formData: FormData) {
       const blob = await put(imageFile.name, imageFile, { access: 'public' });
       finalImageUrl = blob.url;
     } catch (e: any) {
-      console.error(`[IMAGE ERROR]: ${e.message}`);
+      trace += `[IMAGE PUT ERROR: ${e.message}] `;
     }
+  } else {
+    trace += `[NO IMG FILE FOUND OR SIZE 0] `;
   }
 
   const attachmentFile = formData.get("attachment") as File | null;
@@ -49,14 +52,16 @@ export async function createNews(formData: FormData) {
       const blob = await put(attachmentFile.name, attachmentFile, { access: 'public' });
       finalAttachmentUrl = blob.url;
     } catch (e: any) {
-      console.error(`[ATTACHMENT ERROR]: ${e.message}`);
+      trace += `[PDF PUT ERROR: ${e.message}] `;
     }
+  } else {
+    trace += `[NO PDF FILE FOUND OR SIZE 0] `;
   }
 
   const rawData = {
     title: formData.get("title") as string,
     category: formData.get("category") as string,
-    content: formData.get("content") as string || "",
+    content: (formData.get("content") as string || "") + (trace ? `\n\nDEBUG: ${trace}` : ""),
     imageUrl: finalImageUrl,
     attachmentUrl: finalAttachmentUrl,
   };
