@@ -92,13 +92,9 @@ export default async function AdminITAPage(props: { params: Promise<{ lang: stri
                   </select>
                 </div>
                 <div className="grid grid-cols-3 gap-3">
-                  <div className="col-span-1">
-                    <label className="block text-sm font-bold text-gray-700 mb-2">รหัส EB</label>
-                    <input type="text" name="oitCode" required placeholder="เช่น O1" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary font-mono uppercase bg-gray-50" />
-                  </div>
-                  <div className="col-span-2">
-                    <label className="block text-sm font-bold text-gray-700 mb-2">ขนาดไฟล์ (แนบโชว์)</label>
-                    <input type="text" name="size" placeholder="เช่น 2.1 MB" defaultValue="1.5 MB" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary bg-gray-50" />
+                  <div className="col-span-3">
+                    <label className="block text-sm font-bold text-gray-700 mb-2">รหัส EB / MOIT</label>
+                    <input type="text" name="oitCode" required placeholder="เช่น MOIT1" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary font-mono uppercase bg-gray-50" />
                   </div>
                 </div>
                 <div>
@@ -106,8 +102,8 @@ export default async function AdminITAPage(props: { params: Promise<{ lang: stri
                   <input type="text" name="name" required placeholder="เช่น โครงสร้างหน่วยงาน หรือ แบบฟอร์มขออนุญาต" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary bg-gray-50" />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">Google Drive URL (ลิงก์ไฟล์เอกสาร)</label>
-                  <input type="url" name="url" required placeholder="https://..." defaultValue="#" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary bg-gray-50 text-blue-600 font-mono text-sm" />
+                  <label className="block text-sm font-bold text-gray-700 mb-2">แนบไฟล์เอกสาร PDF</label>
+                  <input type="file" name="file" accept=".pdf,application/pdf" required className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary bg-white text-gray-600 font-mono text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 transition-colors" />
                 </div>
                 <button type="submit" className="w-full mt-4 bg-primary hover:bg-primary/90 text-white font-extrabold py-4 rounded-xl flex justify-center items-center text-lg transition-transform hover:-translate-y-1 shadow-md">
                   <FileBarChart className="w-5 h-5 mr-3" />
