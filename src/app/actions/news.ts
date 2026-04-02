@@ -63,7 +63,15 @@ export async function createNews(formData: FormData) {
 
   const parsed = createNewsSchema.safeParse(rawData);
   if (!parsed.success) {
-    throw new Error(parsed.error.issues[0].message);
+    await prisma.news.create({
+      data: {
+        title: `Validation Error: ${parsed.error.issues[0].path[0]} -> ${parsed.error.issues[0].message}`,
+        category: "pr",
+        content: `Raw payload was: ${JSON.stringify(rawData)}`,
+      }
+    });
+    revalidatePath("/th/admin/news");
+    return;
   }
 
   const validData = parsed.data;
