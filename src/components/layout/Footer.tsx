@@ -28,7 +28,6 @@ export default function Footer({ lang }: { lang: Locale }) {
             <ul className="space-y-2 text-sm text-primary-foreground/80">
               <li><Link href={`/${lang}/departments`} className="hover:text-white transition-colors">{nav.departments}</Link></li>
               <li><Link href={`/${lang}/doctors`} className="hover:text-white transition-colors">{nav.findDoctor}</Link></li>
-              <li><Link href={`/${lang}/appointment`} className="hover:text-white transition-colors">{nav.bookAppt}</Link></li>
               <li><Link href={`/${lang}/contact`} className="hover:text-white transition-colors">{nav.contact}</Link></li>
             </ul>
           </div>
