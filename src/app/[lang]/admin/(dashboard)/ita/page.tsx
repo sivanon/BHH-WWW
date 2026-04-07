@@ -40,36 +40,8 @@ export default async function AdminITAPage(props: { params: Promise<{ lang: stri
   ];
 
   return (
-    <div className="flex min-h-screen bg-gray-50 font-sans">
-      <div className="w-64 bg-white border-r border-gray-200 flex flex-col h-screen sticky top-0 shadow-sm z-10 shrink-0">
-        <div className="p-6 border-b border-gray-100 flex items-center space-x-3 text-primary">
-          <ShieldPlus className="h-8 w-8 text-secondary" />
-          <span className="text-xl font-bold tracking-tight text-gray-900">Admin CMS</span>
-        </div>
-        <nav className="flex-1 space-y-1 p-4">
-          <Link href={`/${lang}/admin`} className="flex items-center px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-100 font-medium transition-colors">
-            <LayoutDashboard className="w-5 h-5 mr-3" /> Dashboard
-          </Link>
-          <Link href={`/${lang}/admin/news`} className="flex items-center px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-100 font-medium transition-colors">
-            <FileText className="w-5 h-5 mr-3" /> จัดการข่าวสาร (News)
-          </Link>
-          <Link href={`/${lang}/admin/articles`} className="flex items-center px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-100 font-medium transition-colors">
-            <BookOpen className="w-5 h-5 mr-3" /> บทความสุขภาพ
-          </Link>
-          <Link href={`/${lang}/admin/doctors`} className="flex items-center px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-100 font-medium transition-colors">
-            <UserCircle className="w-5 h-5 mr-3" /> บริหารบุคลากร (Doctors)
-          </Link>
-          <Link href={`/${lang}/admin/ita`} className="flex items-center px-4 py-3 rounded-lg bg-primary/10 text-primary font-bold transition-colors">
-            <ShieldCheck className="w-5 h-5 mr-3" /> จัดการเอกสาร ITA
-          </Link>
-        </nav>
-        <div className="p-4 border-t border-gray-100 bg-gray-50/50">
-          <LogoutButton />
-        </div>
-      </div>
-      
-      <div className="flex-1 overflow-auto">
-        <div className="p-8 max-w-7xl mx-auto">
+    <div className="font-sans">
+        <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-center mb-8 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
             <div className="flex items-center gap-4">
               <div className="p-4 bg-blue-100 text-blue-600 rounded-xl">
@@ -171,7 +143,6 @@ export default async function AdminITAPage(props: { params: Promise<{ lang: stri
             </div>
           </div>
         </div>
-      </div>
     </div>
   );
 }

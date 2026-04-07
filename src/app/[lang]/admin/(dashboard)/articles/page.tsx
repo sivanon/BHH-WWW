@@ -9,36 +9,7 @@ export default async function AdminArticlesPage({ params }: { params: Promise<{ 
   const articles = await prisma.article.findMany({ orderBy: { createdAt: 'desc' } });
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      {/* Sidebar */}
-      <aside className="w-64 bg-white border-r border-gray-200 flex flex-col fixed h-full z-10 shadow-sm">
-        <div className="p-6 border-b border-gray-100 flex items-center justify-center">
-          <ShieldPlus className="h-10 w-10 text-primary mr-3" />
-          <span className="text-xl font-extrabold text-gray-900 tracking-tight">Admin<span className="text-secondary">CMS</span></span>
-        </div>
-        <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
-          <Link href="/th/admin" className="flex items-center px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-100 font-medium transition-colors">
-            <LayoutDashboard className="w-5 h-5 mr-3" /> แดชบอร์ด
-          </Link>
-          <Link href="/th/admin/news" className="flex items-center px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-100 font-medium transition-colors">
-            <FileText className="w-5 h-5 mr-3" /> ข่าวและประกาศ
-          </Link>
-          <Link href="/th/admin/articles" className="flex items-center px-4 py-3 rounded-lg bg-primary/10 text-primary font-bold transition-colors">
-            <BookOpen className="w-5 h-5 mr-3" /> บทความสุขภาพ
-          </Link>
-          <Link href="/th/admin/doctors" className="flex items-center px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-100 font-medium transition-colors">
-            <UserCircle className="w-5 h-5 mr-3" /> บริหารบุคลากร (Doctors)
-          </Link>
-
-        </nav>
-        <div className="p-4 border-t border-gray-100 bg-gray-50/50">
-          <p className="text-xs text-gray-500 mb-3 px-4 font-medium uppercase tracking-wider">บัญชีผู้ใช้</p>
-          <LogoutButton />
-        </div>
-      </aside>
-
-      {/* Main Content */}
-      <main className="flex-1 ml-64 p-10">
+    <div className="font-sans">
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-between items-center mb-8">
             <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">ระบบจัดการบทความสุขภาพ</h1>
@@ -128,7 +99,6 @@ export default async function AdminArticlesPage({ params }: { params: Promise<{ 
             </div>
           </div>
         </div>
-      </main>
     </div>
   );
 }

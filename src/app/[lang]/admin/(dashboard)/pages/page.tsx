@@ -24,38 +24,7 @@ export default async function AdminPagesCMS(props: { params: Promise<{ lang: str
   }, {} as Record<string, any>);
 
   return (
-    <div className="flex min-h-screen bg-gray-50 font-sans">
-      <div className="w-64 bg-white border-r border-gray-200 flex flex-col h-screen sticky top-0 shadow-sm z-10 shrink-0">
-        <div className="p-6 border-b border-gray-100 flex items-center space-x-3 text-primary">
-          <ShieldPlus className="h-8 w-8 text-secondary" />
-          <span className="text-xl font-bold tracking-tight text-gray-900">Admin CMS</span>
-        </div>
-        <nav className="flex-1 space-y-1 p-4">
-          <Link href={`/${lang}/admin`} className="flex items-center px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-100 font-medium transition-colors">
-            <LayoutDashboard className="w-5 h-5 mr-3" /> Dashboard
-          </Link>
-          <Link href={`/${lang}/admin/news`} className="flex items-center px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-100 font-medium transition-colors">
-            <FileText className="w-5 h-5 mr-3" /> จัดการข่าวสาร
-          </Link>
-          <Link href={`/${lang}/admin/articles`} className="flex items-center px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-100 font-medium transition-colors">
-            <BookOpen className="w-5 h-5 mr-3" /> บทความสุขภาพ
-          </Link>
-          <Link href={`/${lang}/admin/pages`} className="flex items-center px-4 py-3 rounded-lg bg-primary/10 text-primary font-bold transition-colors">
-            <PenTool className="w-5 h-5 mr-3" /> จัดการหน้าองค์กร (Static)
-          </Link>
-          <Link href={`/${lang}/admin/doctors`} className="flex items-center px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-100 font-medium transition-colors">
-            <UserCircle className="w-5 h-5 mr-3" /> บริหารบุคลากร
-          </Link>
-          <Link href={`/${lang}/admin/ita`} className="flex items-center px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-100 font-medium transition-colors">
-            <ShieldCheck className="w-5 h-5 mr-3" /> จัดการเอกสาร ITA
-          </Link>
-        </nav>
-        <div className="p-4 border-t border-gray-100 bg-gray-50/50">
-          <LogoutButton />
-        </div>
-      </div>
-      
-      <div className="flex-1 overflow-auto">
+    <div className="font-sans">
         <div className="p-8 max-w-5xl mx-auto">
           <div className="mb-8">
             <h1 className="text-3xl font-extrabold text-gray-900 flex items-center"><PenTool className="w-8 h-8 mr-3 text-primary" /> ระบบแก้ไขหน้าเว็บไซต์องค์กร (Page Content Management)</h1>
@@ -114,7 +83,6 @@ export default async function AdminPagesCMS(props: { params: Promise<{ lang: str
             })}
           </div>
         </div>
-      </div>
     </div>
   );
 }
