@@ -75,7 +75,7 @@ export default async function AdminDashboard() {
             </div>
             
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-              <h3 className="text-gray-500 text-sm font-bold uppercase tracking-wide">ศูนย์ข้อมูล ITA (OIT)</h3>
+              <h3 className="text-gray-500 text-sm font-bold uppercase tracking-wide">ศูนย์ข้อมูล ITA</h3>
               <p className="text-4xl font-extrabold mt-3 text-secondary"><ShieldCheck className="w-10 h-10 inline-block -mt-2" /></p>
               <div className="mt-4 pt-4 border-t border-gray-100">
                 <Link href="/th/admin/ita" className="text-sm text-secondary font-bold hover:underline">จัดการเอกสาร &rarr;</Link>

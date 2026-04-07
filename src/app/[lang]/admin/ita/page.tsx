@@ -77,7 +77,7 @@ export default async function AdminITAPage(props: { params: Promise<{ lang: stri
               </div>
               <div>
                 <h1 className="text-3xl font-extrabold text-gray-900">จัดการหน้าศูนย์ข้อมูล ITA</h1>
-                <p className="text-gray-500 mt-1">อัปโหลด ลบ หรือแก้ไขเอกสาร OIT (Open Data Integrity) ที่แสดงบนหน้าเว็บไซต์</p>
+                <p className="text-gray-500 mt-1">อัปโหลด ลบ หรือแก้ไขเอกสาร ITA (การประเมินคุณธรรมและความโปร่งใส) ที่แสดงบนหน้าเว็บไซต์</p>
               </div>
             </div>
             <a href={`/${lang}/ita`} target="_blank" className="px-5 py-2.5 bg-gray-100 font-bold text-gray-700 rounded-xl hover:bg-gray-200 transition-colors flex items-center">
@@ -157,7 +157,7 @@ export default async function AdminITAPage(props: { params: Promise<{ lang: stri
                             <a href={`/api/pdf/${doc.id}`} target="_blank" className="font-bold text-gray-900 hover:text-primary transition-colors block line-clamp-2">
                               {doc.name}
                             </a>
-                            <p className="text-xs text-gray-400 mt-1">/api/pdf/{doc.id}</p>
+                            <p className="text-xs text-gray-400 mt-1">/api/pdf/{doc.id.substring(0, 10)}...</p>
                           </td>
                           <td className="p-5 text-center">
                             <DeleteOitButton id={doc.id} />

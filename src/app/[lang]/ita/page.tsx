@@ -129,7 +129,7 @@ export default async function ITAPage({ params }: { params: Promise<{ lang: stri
              {rawDocs.length === 0 ? (
                <div className="bg-white rounded-3xl p-16 text-center shadow-xl border border-gray-100">
                  <ShieldCheck className="w-20 h-20 text-gray-200 mx-auto mb-6" />
-                 <h3 className="text-3xl font-extrabold text-gray-800 mb-2">รอการนำเข้าข้อมูล OIT</h3>
+                 <h3 className="text-3xl font-extrabold text-gray-800 mb-2">รอการนำเข้าข้อมูล ITA</h3>
                  <p className="text-gray-500 text-lg">ยังไม่มีเอกสาร ITA ถูกเผยแพร่ในระบบ ผู้ดูแลระบบสามารถเพิ่มเอกสารผ่านหน้า Admin CMS จัดการข้อมูล ITA</p>
                </div>
              ) : (

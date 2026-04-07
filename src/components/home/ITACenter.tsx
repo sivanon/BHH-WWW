@@ -17,7 +17,7 @@ export default function ITACenter() {
 
           <div className="inline-flex items-center bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-lg px-8 py-4 rounded-2xl group-hover:bg-white/20 transition-all group-hover:translate-x-2">
             <Info className="w-6 h-6 mr-3 text-secondary" /> 
-            เข้าสู่ศูนย์ข้อมูลและเอกสารเปิดเผยสาธารณะ (OIT) &rarr;
+            เข้าสู่ศูนย์ข้อมูลและเอกสารเปิดเผยสาธารณะ (ITA) &rarr;
           </div>
         </div>
       </Link>
