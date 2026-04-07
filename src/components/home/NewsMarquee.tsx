@@ -16,7 +16,7 @@ export default function NewsMarquee() {
           .animate-marquee { animation: marquee 20s linear infinite; }
         `}} />
         <div className="animate-marquee whitespace-nowrap font-medium text-sm pl-full">
-          อัปเดตสถานการณ์สำคัญล่าสุด | งดเยี่ยมผู้ป่วยทุกกรณี เพื่อลดความแออัด | เปิดให้บริการคลินิกนอกเวลาราชการแล้ววันนี้ สามารถนัดหมายล่วงหน้าได้
+          ประกาศสถานการณ์ฝุ่น PM 2.5 ล่าสุด | ค่าฝุ่นละอองเกินมาตรฐานในพื้นที่ ขอความร่วมมือผู้รับบริการทุกท่านสวมหน้ากากอนามัย N95 ตลอดเวลา และงดกิจกรรมกลางแจ้ง
         </div>
       </div>
     </div>
