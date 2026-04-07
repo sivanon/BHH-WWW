@@ -61,7 +61,7 @@ export async function createNews(formData: FormData) {
   const rawData = {
     title: formData.get("title") as string,
     category: formData.get("category") as string,
-    content: (formData.get("content") as string || "") + (trace ? `\n\nDEBUG: ${trace}` : ""),
+    content: formData.get("content") as string || "",
     imageUrl: finalImageUrl,
     attachmentUrl: finalAttachmentUrl,
   };
