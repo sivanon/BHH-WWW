@@ -24,10 +24,14 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
     take: 40 
   });
 
-  const specialClinics = [
-    { title: t.fertility, icon: Baby, link: `/${lang}/departments` },
-    { title: t.acupuncture, icon: Activity, link: `/${lang}/departments` },
-    { title: t.xray, icon: ShieldCheck, link: `/${lang}/departments` },
+  const medicalServices = [
+    { title: "บริการผู้ป่วยนอก (OPD)", icon: Activity, desc: "ตรวจรักษาโรคทั่วไป ให้คำปรึกษาและส่งเสริมสุขภาพ", phone: "053-980-377 ต่อ 101" },
+    { title: "งานอุบัติเหตุ-ฉุกเฉิน (ER)", icon: AlertCircle, desc: "บริการฉุกเฉิน 24 ชั่วโมง ช่วยเหลือและกู้ชีพผู้ป่วยวิกฤต", phone: "1669 หรือ 053-980-377 ต่อ 119" },
+    { title: "ตึกนอนผู้ป่วยใน (IPD)", icon: ShieldCheck, desc: "ดูแลผู้ป่วยที่ต้องพักรักษาตัว พร้อมทีมแพทย์พยาบาลดูแล 24 ชม.", phone: "053-980-377 ต่อ 201" },
+    { title: "บริการทันตกรรม", icon: Sparkles, desc: "อุดฟัน ถอนฟัน ขูดหินปูน และดูแลสุขภาพช่องปากครบวงจร", phone: "053-980-377 ต่อ 105" },
+    { title: "กายภาพบำบัด", icon: Activity, desc: "ฟื้นฟูสมรรถภาพร่างกาย พัฒนาการเคลื่อนไหว ลดอาการปวด", phone: "053-980-377 ต่อ 107" },
+    { title: "แพทย์แผนไทย", icon: Sparkles, desc: "นวดแผนไทย ประคบสมุนไพร บำบัดรักษาฟื้นฟูคุณผู้ป่วยและการแพทย์พื้นบ้าน", phone: "053-980-377 ต่อ 108" },
+    { title: "งานจิตเวชและยาเสพติด", icon: Info, desc: "ให้คำปรึกษาปัญหาสุขภาพจิต ความเครียด และบำบัดผู้ติดยาเสพติด", phone: "053-980-377 ต่อ 109" },
   ];
 
   return (
@@ -46,48 +50,38 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </div>
       </section>
 
-      {/* ITA Center Section */}
-      <section className="py-16 bg-gray-50 border-b border-gray-100">
-        <div className="container mx-auto px-4">
-          <ITACenter />
-        </div>
-      </section>
-
-      {/* Social Media & Mor Prom Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center mb-10 border-l-4 border-primary pl-4">
-            <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">ช่องทางการติดต่อ (Connect with us)</h2>
-          </div>
-          <SocialChannels />
-        </div>
-      </section>
-
-      {/* Special Clinics */}
-      <section className="py-20 bg-white border-t border-gray-100">
+      {/* Medical Services Section */}
+      <section className="py-20 bg-gray-50 border-b border-gray-100">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-10 border-l-4 border-primary pl-4">
-            <h2 className="text-3xl font-bold text-gray-900">{t.specialClinics}</h2>
+            <h2 className="text-3xl font-bold text-gray-900">การบริการทางการแพทย์ (Medical Services)</h2>
             <Link href={`/${lang}/departments`} className="hidden md:flex items-center text-primary font-bold hover:underline text-lg">
               {t.allServices} <ArrowRight className="ml-1 w-5 h-5" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {specialClinics.map((clinic, i) => (
-              <Link href={clinic.link} key={i}>
-                <div className="bg-gray-50 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all border border-gray-100 flex items-center group">
-                  <div className="bg-primary/10 p-5 rounded-2xl text-primary mr-6 group-hover:bg-primary group-hover:text-white transition-colors">
-                    <clinic.icon className="w-10 h-10" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors">{clinic.title}</h3>
-                    <p className="text-secondary font-medium mt-1">{t.learnMore} &rarr;</p>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {medicalServices.map((service, i) => (
+              <div key={i} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-all border border-gray-100 flex flex-col group">
+                <div className="bg-primary/10 p-4 rounded-xl text-primary mb-5 group-hover:bg-primary group-hover:text-white transition-colors self-start">
+                  <service.icon className="w-8 h-8" />
                 </div>
-              </Link>
+                <h3 className="text-xl font-bold text-gray-900 mb-2 leading-tight">{service.title}</h3>
+                <p className="text-gray-600 text-sm mb-4 flex-grow">{service.desc}</p>
+                <div className="bg-gray-50 p-3 rounded-lg border border-gray-100 mt-auto">
+                  <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">ติดต่อสอบถาม</p>
+                  <p className="text-primary font-bold">{service.phone}</p>
+                </div>
+              </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ITA Center Section */}
+      <section className="py-16 bg-white border-b border-gray-100">
+        <div className="container mx-auto px-4">
+          <ITACenter />
         </div>
       </section>
 
