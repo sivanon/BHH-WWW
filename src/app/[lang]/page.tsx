@@ -85,6 +85,16 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </div>
       </section>
 
+      {/* Social Media & Mor Prom Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center mb-10 border-l-4 border-primary pl-4">
+            <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">ช่องทางการติดต่อ (Connect with us)</h2>
+          </div>
+          <SocialChannels />
+        </div>
+      </section>
+
       {/* Map Section */}
       <section className="py-20 bg-gray-50 border-t border-gray-100">
         <div className="container mx-auto px-4">
