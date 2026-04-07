@@ -129,7 +129,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             ค้นหาข้อมูลภายในเว็บไซต์
           </h2>
           <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-12 leading-relaxed font-light break-words">
-            พิมพ์คำค้นหาของคุณ เช่น "เวลาเปิดคลินิกพิเศษ", "ข่าวประกาศรับสมัครงาน", หรือ "คู่มือปฏิบัติงาน" <br className="hidden md:block"/> 
+            พิมพ์คำค้นหาของคุณ เช่น "เวลาเปิดคลินิกพิเศษ", "ข่าวประกาศรับสมัครงาน", หรือ "คู่มือปฏิบัติงาน" <br /> 
             เพื่อค้นหาข้อมูลที่คุณต้องการได้อย่างรวดเร็วและแม่นยำ
           </p>
           <form action={`/${lang}/search`} className="max-w-2xl mx-auto relative group flex shadow-2xl">
