@@ -135,7 +135,7 @@ export default async function SearchPage({
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Search Input Bar */}
         <div className="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100 mb-8">
-          <form action={`/${lang}/search`} className="relative flex flex-col md:flex-row shadow-md rounded-2xl overflow-hidden">
+          <form method="GET" action={`/${lang}/search`} className="relative flex flex-col md:flex-row shadow-md rounded-2xl overflow-hidden">
             <input 
               type="text" 
               name="q"

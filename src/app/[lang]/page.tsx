@@ -132,7 +132,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             พิมพ์คำค้นหาของคุณ เช่น "เวลาเปิดคลินิกพิเศษ", "ข่าวประกาศรับสมัครงาน", หรือ "คู่มือปฏิบัติงาน" <br /> 
             เพื่อค้นหาข้อมูลที่คุณต้องการได้อย่างรวดเร็วและแม่นยำ
           </p>
-          <form action={`/${lang}/search`} className="max-w-2xl mx-auto relative group flex shadow-2xl">
+          <form method="GET" action={`/${lang}/search`} className="max-w-2xl mx-auto relative group flex shadow-2xl">
             <div className="relative flex-grow">
               <input 
                 type="text" 
