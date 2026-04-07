@@ -49,13 +49,13 @@ export default function AdminLogin() {
         
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-sm font-bold text-gray-700 mb-1">อีเมล (Email) / "admin"</label>
+            <label className="block text-sm font-bold text-gray-700 mb-1">อีเมล (Email)</label>
             <input 
               type="text" 
               value={email}
               onChange={e => setEmail(e.target.value)}
               className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary py-3 px-4 border bg-gray-50"
-              placeholder="admin@hospital.com"
+              placeholder=""
               required
             />
           </div>
@@ -66,7 +66,7 @@ export default function AdminLogin() {
               value={password}
               onChange={e => setPassword(e.target.value)}
               className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary py-3 px-4 border bg-gray-50"
-              placeholder="admin1234"
+              placeholder=""
               required
             />
           </div>
