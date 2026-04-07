@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { HeartPulse } from "lucide-react";
 
 export default function AdminLogin() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -16,17 +16,14 @@ export default function AdminLogin() {
     e.preventDefault();
     setLoading(true);
     
-    // Quick admin bypass mapping if they forget the exact seed text
-    const loginEmail = email === 'admin' ? 'admin@hospital.com' : email;
-    
     const res = await signIn("credentials", {
       redirect: false,
-      email: loginEmail,
+      username,
       password,
     });
 
     if (res?.error) {
-      setError("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
+      setError("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
       setLoading(false);
     } else {
       router.push("/th/admin");
@@ -49,11 +46,11 @@ export default function AdminLogin() {
         
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-sm font-bold text-gray-700 mb-1">อีเมล (Email)</label>
+            <label className="block text-sm font-bold text-gray-700 mb-1">ชื่อผู้ใช้งาน (Username)</label>
             <input 
               type="text" 
-              value={email}
-              onChange={e => setEmail(e.target.value)}
+              value={username}
+              onChange={e => setUsername(e.target.value)}
               className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary py-3 px-4 border bg-gray-50"
               placeholder=""
               required
