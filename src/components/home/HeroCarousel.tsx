@@ -15,7 +15,7 @@ const slides = [
   {
     image: "/images/slides/hospital-front.jpg",
     title: "โรงพยาบาลบ้านโฮ่ง",
-    subtitle: "มุ่งมั่นยกระดับบริการทางการแพทย์ พัฒนาคุณภาพชีวิตตลอด 24 ชั่วโมง",
+    subtitle: "โรงพยาบาลชุมชนคุณภาพ มุ่งสู่การมีสุขภาพดี",
     noOverlay: false
   }
 ];
