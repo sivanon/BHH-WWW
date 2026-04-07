@@ -33,9 +33,9 @@ export default function WelcomeModal() {
           </div>
         </div>
         <div className="p-8 text-center space-y-4">
-          <p className="text-gray-700 leading-loose font-medium break-words text-lg">
-            ยินดีต้อนรับเข้าสู่ช่องทางออนไลน์ของโรงพยาบาลบ้านโฮ่ง <br className="hidden md:block"/>
-            โปรดสวมหน้ากากอนามัยทุกครั้งก่อนเข้าใช้บริการภายในอาคาร <br className="hidden md:block"/>
+          <p className="text-gray-700 leading-relaxed font-medium break-words text-lg">
+            ยินดีต้อนรับเข้าสู่ช่องทางออนไลน์ของโรงพยาบาลบ้านโฮ่ง <br />
+            โปรดสวมหน้ากากอนามัยทุกครั้งก่อนเข้าใช้บริการภายในอาคาร <br />
             เพื่อสุขอนามัยและความปลอดภัยของท่านและส่วนรวม
           </p>
           <button 
