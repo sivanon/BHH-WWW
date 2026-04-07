@@ -118,37 +118,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </div>
       </section>
 
-      {/* Call to Action: Internal Search Engine */}
-      <section className="py-24 bg-gradient-to-r from-primary to-blue-900 text-white text-center relative overflow-hidden">
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="bg-white/10 w-20 h-20 mx-auto rounded-3xl flex items-center justify-center mb-6 shadow-2xl backdrop-blur-sm border border-white/20">
-            <Search className="w-10 h-10 text-white" />
-          </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight flex items-center justify-center">
-            ค้นหาข้อมูลภายในเว็บไซต์
-          </h2>
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-12 leading-relaxed font-light break-words">
-            พิมพ์คำค้นหาของคุณ เช่น "เวลาเปิดคลินิกพิเศษ", "ข่าวประกาศรับสมัครงาน", หรือ "คู่มือปฏิบัติงาน" <br /> 
-            เพื่อค้นหาข้อมูลที่คุณต้องการได้อย่างรวดเร็วและแม่นยำ
-          </p>
-          <form method="GET" action={`/${lang}/search`} className="max-w-2xl mx-auto relative group flex shadow-2xl">
-            <div className="relative flex-grow">
-              <input 
-                type="text" 
-                name="q"
-                required
-                placeholder="ค้นหาข้อมูลโรงพยาบาลรวดเร็วกว่า..." 
-                className="w-full bg-white/10 backdrop-blur-md border border-white/30 border-r-0 text-white placeholder-white/60 rounded-l-2xl px-6 py-5 pl-14 text-lg focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
-              />
-              <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-white/60 w-6 h-6" />
-            </div>
-            <button type="submit" className="bg-secondary hover:bg-secondary/90 text-white font-bold px-8 py-5 rounded-r-2xl border border-secondary transition-all flex items-center text-lg">
-              ค้นหา <ArrowRight className="w-5 h-5 ml-2" />
-            </button>
-          </form>
-        </div>
-      </section>
+
     </div>
   );
 }
